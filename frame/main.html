@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <body>
+            <center><h1>LA CUCINA ITALIANA</h1>
+            <p>La cucina italiana è una delle più celebri e apprezzate al mondo, 
+                caratterizzata da ingredienti freschi e di alta qualità. 
+                Ogni regione d'Italia offre piatti tipici che riflettono le tradizioni locali, 
+                come la pasta, la pizza, il risotto e i piatti a base di carne e pesce. 
+                La semplicità è alla base della cucina italiana, 
+                con l'uso di pochi ma saporiti ingredienti, come pomodoro, olio d'oliva, basilico, formaggi e salumi. 
+                La pizza napoletana, la pasta alla carbonara, il risotto alla milanese e la lasagna sono solo alcuni dei piatti iconici. 
+                Inoltre, i dolci come il tiramisù e la panna cotta completano un pasto indimenticabile. 
+                Ogni piatto racconta una storia di tradizione, passione e amore per il buon cibo.</p>  
+            </center>
+
+        </body>
+    </head>
+</html>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina con Sfondo Schiarito</title>
+    <style>
+        /* Impostazione dell'immagine di sfondo e dello schiarimento */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('https://t4.ftcdn.net/jpg/03/06/25/55/360_F_306255542_XWSXoyfIIiYGJv1N5zLvF8bEzPoXgpG3.jpg'); /* Sostituisci con il tuo URL */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.7); /* Schiarimento 50% */
+            z-index: -1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding-top: 20%;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+
+        p {
+            font-size: 1.5em;
+        }
+    </style>
