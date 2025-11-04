@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>CPU</title>
+        <style>
+            /* affianca immagini e testo */
+            .side-by-side { display:flex; gap:12px; align-items:flex-start; flex-wrap:wrap; }
+            .side-by-side img { width:200px; height:250px; object-fit:contain; display:block; }
+            .side-by-side .text { max-width: calc(100% - 220px); /* spazio per le immagini */ }
+        </style>
+    </head>
+    <body style="background-color:#81c1df;margin:16px;font-family:Arial,Helvetica,sans-serif">
+        <h1>La CPU</h1>
+        <img src="cpuu.jpg" alt="CPU" width="300" height="200">
+        <iframe src="https://it.wikipedia.org/wiki/CPU" title="Wiki CPU" width="850" height="200"></iframe>
+        <p>La CPU (Central Processing Unit) è il componente principale di un computer responsabile dell'esecuzione delle istruzioni e del controllo delle operazioni. 
+            È spesso definita il "cervello" del computer.
+            <br>
+        Svolge due funzioni:
+        <li>sovrintende a tutte le operazioni del
+        sistema (generando i segnali necessari al
+        funzionamento dei circuiti a esso
+        collegati)</li>
+        <li>esegue i calcoli aritmetici e logici.</li>
+        </p>
+        <h2>Componenti principali della CPU:</h2>
+        <li><strong>l’unità di controllo (CU, Control Unit)</strong>: coordina le operazioni del
+        computer, interpreta le istruzioni e gestisce il flusso di dati tra le diverse parti del sistema.</li>
+        <li><strong>l’unità aritmetico logica (ALU, Arithmetic Logic Unit)</strong>: esegue operazioni aritmetiche e logiche.</li>
+        <li><strong>memoria interna</strong>: formata da diverse celle di memoria dedicate a scopi
+        specifici, chiamati registri di memoria.</li>
+        </ul>
+        <h2>Il ciclo macchina</h2>
+    <img src="ciclo.png" alt="Ciclo macchina" width="200" height="250" style="float:left;margin:0 15px 15px 0;">
+    <p>Il ciclo macchina è il processo attraverso il quale la CPU esegue le istruzioni. Esso si articola in tre fasi principali:</p>
+            <strong>Fetch</strong>: recupero dell'istruzione dalla memoria.<br>
+            <strong>Decode</strong>: decodifica dell'istruzione per determinarne il significato.<br>
+            <strong>Fetch operatori</strong>:la CPU identifica l'operazione da eseguire (es. ADD, SUB) e prepara l'unità aritmetico-logica (ALU).<br>
+            <strong>Fetch operandi</strong>:la CPU recupera i dati necessari (operandi) dalla memoria o dai registri.<br>
+            <strong>Execute</strong>: esecuzione dell'istruzione da parte della CPU.<br>
+            <strong>Brevemente</strong>: La CU inizia con il prelevamento dalla memoria
+            del codice macchina dell’istruzione da
+            eseguire.
+
+            L’istruzione prelevata viene trasferita in un
+            registro specifico e quindi codificata. Dopo
+            aver codificato, cioè tradotto l’istruzione, la
+            CPU emette i segnali necessari all’esecuzione
+            dell’istruzione.
+
+    <h2 style="clear:left;margin-top:15px;">L'architettura interna della CPU</h2>
+    <img src="arc.png" alt="Architettura interna della CPU" width="500" height="300" style="float:left;margin:0 15px 15px 0;">
+    <p>L'architettura interna della CPU comprende vari componenti chiave che lavorano insieme per eseguire le istruzioni. Tra questi componenti troviamo:</p>
+        <strong>Unità di controllo</strong>: coordina tutte le operazioni della CPU. <br>
+        <strong>PC (Program Counter)</strong>: contiene l’indirizzo della prossima istruzione da eseguire. <br>
+        <strong>IR (Instruction Register)</strong>: memorizza l'istruzione attualmente in esecuzione. <br>
+        <strong>PSW (Program Status Word)</strong>: contiene informazioni sullo stato del programma e della CPU.
+        <strong>MAR (Memory Address Register)</strong>: contiene l'indirizzo della cella di memoria da cui leggere o scrivere dati. <br>
+        <strong>MDR (Memory Data Register)</strong>: contiene i dati letti dalla memoria o da scrivere nella memoria. <br>
+        <strong>ALU (Arithmetic Logic Unit)</strong>: esegue operazioni aritmetiche e logiche. <br>
+        <strong>Registri</strong>:memorizzano temporaneamente dati e risultati intermedi.<br>
+        <strong>Bus indirizzi</strong>: trasmette gli indirizzi delle celle di memoria. <br>
+        <strong>Bus dati</strong>: trasmette i dati tra i vari componenti della CPU e la memoria.<br>
+        <strong>Bus controllo</strong>: trasmette segnali di controllo tra i vari componenti della CPU.<br>
+        <h2 style="clear:left;margin-top:15px;">CISC e RISC</h2>
+        <img src="cr.png" alt="CISC e RISC" width="400" height="200" style="float:left;margin:0 15px 15px 0;">
+        <p>Le architetture CISC (Complex Instruction Set Computer) e RISC (Reduced Instruction Set Computer) rappresentano due approcci diversi alla progettazione delle CPU.</p>
+        <strong>CISC</strong>: Le CPU CISC sono progettate per eseguire un set complesso di istruzioni, che possono eseguire operazioni complesse in un'unica istruzione. Questo approccio riduce il numero di istruzioni necessarie per eseguire un compito, ma può rendere la CPU più complessa e lenta nell'esecuzione di istruzioni semplici.<br>
+        <strong>RISC</strong>: Le CPU RISC, d'altra parte, utilizzzano un set ridotto di istruzioni semplici, che possono essere eseguite molto rapidamente. Questo approccio semplifica la progettazione della CPU e può portare a prestazioni migliori per operazioni semplici, ma richiede più istruzioni per compiti complessi.<br>
+
+
+
+    </body>
+</html>

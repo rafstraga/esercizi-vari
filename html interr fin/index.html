@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>HTML int</title>
+    <style>
+        /* Minimo CSS necessario per avere il menu in colonna 20% / 80% */
+        html,body{height:100%;margin:0;font-family:Arial,Helvetica,sans-serif}
+        .wrap{display:flex;height:100vh}
+    nav{width:20%;min-width:140px;background:#81c1df;padding:12px;box-sizing:border-box}
+        main{flex:1}
+        iframe{width:100%;height:100%;border:0;display:block}
+    nav h2{margin:0 0 8px 0;font-size:16px}
+    /* titoli/menu con rettangolo verde chiaro e comportamento hover/active grigio */
+    nav a{display:block;padding:8px 10px;background:#dff7e0;border-radius:4px;color:#111;text-decoration:none;margin-bottom:6px}
+    nav a:hover, nav a:active{background:#e0e0e0}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <nav>
+            <h2>Menu</h2>
+            <a href="cpu.html" target="centrale">CPU</a>
+            <a href="mem.html" target="centrale">Memoria</a>
+            <a href="vonn.html" target="centrale">Von Neumann</a>
+        </nav>
+
+        <main>
+            <iframe name="centrale" src="vonn.html" title="Contenuto principale">
+                <p>Benvenuto nella mia pagina iniziale. Se non vedi il contenuto, apri direttamente <a href="vonn.html">vonn.html</a>.</p>
+            </iframe>
+        </main>
+    </div>
+</body>
+</html>
