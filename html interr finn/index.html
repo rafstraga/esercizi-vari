@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>HTML int</title>
+    <style>
+        /* Minimo CSS necessario per avere il menu in colonna 20% / 80% */
+        html,body{height:100%;margin:0;font-family:Arial,Helvetica,sans-serif}
+        /* Header + layout */
+        header{position:fixed;top:0;left:0;right:0;background:#81c1df;z-index:10;border-bottom:0px solid #81c1df;min-height:48px}
+        .wrap{display:flex;height:calc(100vh - 48px);margin-top:48px}
+
+        /* Top dropdown menu */
+        #top-nav, #top-nav li, #top-nav ul{margin:0;padding:0;list-style:none}
+        #top-nav{display:flex;align-items:center;gap:6px;padding:8px 12px}
+        #top-nav li{display:inline-block;position:relative}
+        #top-nav a{display:block;padding:12px 16px;text-decoration:none;color:#3B5998;font-weight:bold}
+        #top-nav a:hover, #top-nav a:focus{color:#121B36;background:transparent}
+
+        /* --- Nuova gestione visibilità dropdown (più affidabile per hover) --- */
+        /* base dropdown (livello 1): nascosto finché non si fa hover sul relativo > li */
+        #top-nav ul.dropdown{
+            position:absolute;
+            top:100%;
+            left:0;
+            background:#81c1df;
+            border:1px solid #111;
+            box-shadow:0 2px 4px rgba(0,0,0,0.05);
+            min-width:10rem;
+            padding:6px 0;
+            opacity:0;
+            visibility:hidden;
+            pointer-events:none;
+            z-index:20;
+            transition: none;
+        }
+        /* mostra il dropdown del livello superiore solo al passaggio sul relativo figlio diretto */
+        #top-nav > li:hover > ul.dropdown,
+        #top-nav > li:focus-within > ul.dropdown {
+            opacity:1;
+            visibility:visible;
+            pointer-events:auto;
+        }
+
+        /* dropdown annidato: apparirà a destra del menu padre e resta nascosto finché non si passa sul genitore (li) */
+        #top-nav ul.dropdown li{display:block; position:relative}
+        #top-nav ul.dropdown li > ul.dropdown{
+            top:0;
+            left:100%;
+            min-width:10rem;
+            opacity:0;
+            visibility:hidden;
+            pointer-events:none;
+            z-index:30;
+        }
+        /* mostra il sotto-menu solo quando si passa col mouse sul genitore (es. "Processori multipli") */
+        #top-nav ul.dropdown li:hover > ul.dropdown,
+        #top-nav ul.dropdown li:focus-within > ul.dropdown {
+            opacity:1;
+            visibility:visible;
+            pointer-events:auto;
+            left:100%;
+        }
+
+        #top-nav ul.dropdown li a{display:block;padding:8px 12px;color:#3B5998;white-space:nowrap}
+        #top-nav ul.dropdown li a:hover, #top-nav ul.dropdown li a:focus{background:#81c1df;color:#121B36}
+
+    .side-nav{width:20%;min-width:140px;background:#81c1df;padding:12px;box-sizing:border-box}
+        main{flex:1}
+        iframe{width:100%;height:100%;border:0;display:block}
+    .side-nav h2{margin:0 0 8px 0;font-size:16px}
+    /* titoli/menu con rettangolo verde chiaro e comportamento hover/active grigio */
+    .side-nav a{display:block;padding:8px 10px;background:#dff7e0;border-radius:4px;color:#111;text-decoration:none;margin-bottom:6px}
+    .side-nav a:hover, .side-nav a:active{background:#e0e0e0}
+    </style>
+</head>
+<body>
+    <!-- Top navigation (dropdown) -->
+    <header>
+        <nav aria-label="main navigation">
+            <ul id="top-nav" style="margin:0;padding:0;list-style:none;">
+                <li>
+                    <a href="vonn.html" target="centrale">Home</a>
+                </li>
+                <li>
+                    <a href="#" aria-haspopup="true" aria-expanded="false">Von Neumann</a>
+                    <ul class="dropdown">
+                        <li><a href="cpu.html" target="centrale">CPU</a></li>
+                        <li><a href="mem.html" target="centrale">Memoria</a></li>
+                        <li><a href="vonn.html" target="centrale">Von Neumann</a></li>
+                    </ul>
+                </li>
+                <!-- Nuovo pop-up "Non Von Neumann" aggiunto -->
+                <li>
+                    <a href="#" aria-haspopup="true" aria-expanded="false">Non Von Neumann</a>
+                    <ul class="dropdown">
+                        <li><a href="harv.html" target="centrale">Harvard</a></li>
+                        <li>
+                            <!-- "Processori multipli": il sotto-popup appare solo al hover -->
+                            <a href="#">Processori multipli</a>
+                            <ul class="dropdown">
+                                <li><a href="fuori_ordine.html" target="centrale">Fuori ordine</a></li>
+                                <li><a href="prefetch.html" target="centrale">Pre fetch</a></li>
+                                <li><a href="speculative_inspection.html" target="centrale">Speculative inspection</a></li>
+                                <li><a href="pipeline.html" target="centrale">Pipeline</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="nonvonn_approfondimenti.html" target="centrale">Approfondimenti</a></li>
+                    </ul>
+                </li>
+                <!-- Settings removed per request -->
+            </ul>
+        </nav>
+    </header>
+    <div class="wrap">
+        <main>
+            <iframe name="centrale" src="vonn.html" title="Contenuto principale">
+                <p>Benvenuto nella mia pagina iniziale. Se non vedi il contenuto, apri direttamente <a href="vonn.html">vonn.html</a>.</p>
+            </iframe>
+        </main>
+    </div>
+
+    <!-- Script minimale per permettere il toggle di aria-expanded su touch/click -->
+    <script>
+    (function(){
+      const toggles = document.querySelectorAll('#top-nav a[aria-haspopup="true"]');
+      if(!toggles.length) return;
+      toggles.forEach(a=>{
+        a.addEventListener('click', function(e){
+          const currently = this.getAttribute('aria-expanded') === 'true';
+          // chiude tutti
+          toggles.forEach(t=>t.setAttribute('aria-expanded','false'));
+          // apre/seleziona il corrente
+          this.setAttribute('aria-expanded', String(!currently));
+          // previeni navigazione immediata quando apro il menu
+          if(!currently) e.preventDefault();
+        });
+      });
+      // chiudi se clicco fuori
+      document.addEventListener('click', function(ev){
+        if(!ev.target.closest('#top-nav')){
+          toggles.forEach(t=>t.setAttribute('aria-expanded','false'));
+        }
+      });
+    })();
+    </script>
+</body>
+</html>
